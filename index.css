@@ -1,6 +1,7 @@
 body {
-    background: #eee;
+    background: #fff;
     margin: 0;
+    overflow: hidden;
 }
 
 #color-box {
@@ -42,6 +43,7 @@ body {
 
 #hero {
     width: 25em;
+    cursor:url('monkey.png'), pointer;
 }
 
 .header {
@@ -82,4 +84,20 @@ body {
 .disabled-nav-link {
     color: gray;
     text-decoration: none;
+}
+
+.secret-link {
+    position: fixed;
+    top: 1em;
+    right: 31em;
+    color: white;
+    text-shadow: 0.1em 0.1em 0.2em black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.game-bullet {
+    position: absolute;
+    display: none;
+    pointer-events: none;
 }
