@@ -21,6 +21,8 @@ coconut.classList.add('game-bullet');
 let heroTimer;
 let coconutX = 0;
 let coconutRotate = 0;
+let coconutSpeed = 0.01;
+let coconutMaxSpeed = 0.05;
 leftColumn.appendChild(coconut);
 let gameRunning = false;
 let mousePosition = { x: 0, y: 0 };
@@ -59,6 +61,7 @@ gameEnd = () => {
     bubbleContent.innerHTML = "Dodge the coconuts!";
     score = 0;
     gameScore.innerHTML = "Score:<br>" + score;
+    coconutSpeed = 0.01;
 }
 
 monkeyDead = () => {
@@ -72,7 +75,7 @@ animation = () => {
 
     if (coconutX > 0) {
         let width = leftColumn.clientWidth;
-        coconutX -= width * 0.01;
+        coconutX -= width * coconutSpeed;
         coconut.style.left = coconutX + 'px';
         coconutRotate += 2;
         coconut.style.rotate = coconutRotate + 'deg';
@@ -92,6 +95,9 @@ animation = () => {
 
 resetCoconut = () => {
     let width = leftColumn.clientWidth;
+    coconutSpeed *= 1.1;
+    coconutSpeed = Math.min(coconutSpeed, coconutMaxSpeed);
+    console.log(coconutSpeed);
     coconutX = width;
     coconut.style.left = coconutX + 'px';
     coconut.style.top = (0.2 +Math.random() * 0.8) * 100 + '%';
