@@ -1,31 +1,38 @@
-let secret = document.querySelector('.secret-link');
-console.log(secret);
+
+// === SECRET LINK ===
+let secret = document.getElementsByClassName('secret-link')[0];
 secret.addEventListener('mouseenter', function() {
     secret.style.left = Math.random() * 100 + "%";
     secret.style.top = Math.random() * 100 + "%";
     secret.style.position = "absolute";
 });
 
+// === DODGE THE COCONUTS GAME ===
 let hero = document.getElementById('hero');
+let coconut = document.createElement('img');
+let leftColumn = document.getElementById('main-left-column');
+let gameHeader = document.getElementsByClassName('game-header')[0];
+let gameScore = document.getElementsByClassName('game-score')[0];
+let bubbleContent = document.getElementsByClassName('bubble-content')[0];
+
+coconut.src = 'coconut.png';
+coconut.classList.add('game-bullet');
+
 let heroTimer;
+let coconutX = 0;
+let coconutRotate = 0;
+leftColumn.appendChild(coconut);
+let gameRunning = false;
+let mousePosition = { x: 0, y: 0 };
+let score = 0;
+
+
 hero.addEventListener('mouseenter', function() {
     gameStart();
 });
 hero.addEventListener('mouseleave', function() {
     gameEnd();
 });
-
-let coconut = document.createElement('img');
-coconut.src = 'coconut.png';
-coconut.classList.add('game-bullet');
-let coconutX = 0;
-let coconutRotate = 0;
-let leftColumn = document.getElementById('main-left-column');
-leftColumn.appendChild(coconut);
-
-let gameRunning = false;
-
-let mousePosition = { x: 0, y: 0 };
 
 leftColumn.addEventListener('mousemove', e =>{
     mousePosition.x = e.layerX;
@@ -39,17 +46,25 @@ gameStart = () => {
     resetCoconut();
     coconut.style.display = 'block';
     requestAnimationFrame(animation);
+    gameHeader.style.display = 'block';
+    gameScore.style.display = 'block';
 }
 
 gameEnd = () => {
     gameRunning = false;
     coconut.style.display = 'none';
     hero.style.cursor = "url('monkey.png'), pointer";
+    gameHeader.style.display = 'none';
+    gameScore.style.display = 'none';
+    bubbleContent.innerHTML = "Dodge the coconuts!";
+    score = 0;
+    gameScore.innerHTML = "Score:<br>" + score;
 }
 
 monkeyDead = () => {
     gameRunning = false;
     hero.style.cursor = "url('monkey-dead.png'), pointer";
+    bubbleContent.innerHTML = "You died :(<br>Score: " + score;
 }
 
 animation = () => {
@@ -63,6 +78,8 @@ animation = () => {
         coconut.style.rotate = coconutRotate + 'deg';
     } else {
         resetCoconut();
+        score++;
+        gameScore.innerHTML = "Score:<br>" + score;
     }
     if (Math.abs(coconut.offsetLeft - mousePosition.x) < 15 &&
         Math.abs(coconut.offsetTop - mousePosition.y) < 15) {

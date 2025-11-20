@@ -86,6 +86,49 @@ body {
     text-decoration: none;
 }
 
+.game-header {
+    position: fixed;
+    color: black;
+    /* text-shadow: 0.1em 0.1em 0.1em BLACK; */
+    font-size: 2em;
+    align-self: baseline;
+    margin-top: 0.7em;
+    margin-left: -5.5em;
+    pointer-events: none;
+    border-radius: 5em;
+    padding: 1.4em;
+    width: 6em;
+    text-align: center;
+    display: none;
+}
+
+.speech-bubble {
+    width: 6em;
+    position: fixed;
+    z-index: -1;
+}
+
+.bubble-content {
+    margin-left: 3.4em;
+    margin-top: 1em;
+    width: 5em;
+}
+
+.game-score {
+    position: fixed;
+    display: none;
+    color: white;
+    text-shadow: 0.1em 0.1em 0.1em BLACK;
+    align-self: baseline;
+    padding-top: 2em;
+    padding-left: 0.5em;
+    text-align: center;
+    justify-self: anchor-center;
+    pointer-events: none;
+}
+
+
+
 .secret-link {
     position: fixed;
     top: 1em;
