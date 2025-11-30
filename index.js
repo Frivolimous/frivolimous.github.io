@@ -100,5 +100,6 @@ resetCoconut = () => {
     console.log(coconutSpeed);
     coconutX = width;
     coconut.style.left = coconutX + 'px';
-    coconut.style.top = (Math.random()) * 100 + '%';
+    // 6% to 88%
+    coconut.style.top = (0.06 +Math.random() * 0.82) * 100 + '%';
 }
