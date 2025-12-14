@@ -4,8 +4,26 @@ let secret = document.getElementsByClassName('secret-link')[0];
 secret.addEventListener('mouseenter', function() {
     secret.style.left = Math.random() * 100 + "%";
     secret.style.top = Math.random() * 100 + "%";
-    secret.style.position = "absolute";
 });
+
+// === STYLISH BUTTON ===
+let styleButton = document.getElementsByClassName('style-button')[0];
+styleButton.addEventListener('click', function() {
+    let background = makeRandomColor();
+    let text = makeRandomColor();
+    styleButton.style.background = background;
+    styleButton.style.color = text;
+    styleButton.style.borderColor = text;
+    console.log(background, text);
+});
+
+function makeRandomColor() {
+    let randomNumber = Math.floor(Math.random() * 0xfff);
+    let randomColor = '#' + randomNumber.toString(16).padStart(3, '0');
+
+    return randomColor;
+}
+
 
 // === DODGE THE COCONUTS GAME ===
 let hero = document.getElementById('hero');

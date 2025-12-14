@@ -47,7 +47,7 @@ body {
 }
 
 .header {
-    font-size: 3em;
+    font-size: 2.5em;
     color: #000;
     font-weight: bold;
 }
@@ -74,6 +74,7 @@ body {
     color: white;
     text-shadow: 0.1em 0.1em 0.2em black;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .navbar a:hover {
@@ -143,4 +144,12 @@ body {
     position: absolute;
     display: none;
     pointer-events: none;
+}
+
+.style-button {
+    margin-top: 0.5em;
+    font-size: 2em;
+    color: #444;
+    background: #f00;
+    cursor: pointer;
 }
