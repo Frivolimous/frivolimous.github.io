@@ -153,4 +153,5 @@ body {
     color: #444;
     background: #f00;
     cursor: pointer;
+    transition: all 0.3s;
 }
