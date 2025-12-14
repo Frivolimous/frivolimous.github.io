@@ -18,10 +18,11 @@ styleButton.addEventListener('click', function() {
 });
 
 function makeRandomColor() {
-    let randomNumber = Math.floor(Math.random() * 0xfff);
-    let randomColor = '#' + randomNumber.toString(16).padStart(3, '0');
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
 
-    return randomColor;
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 
