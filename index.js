@@ -2,8 +2,10 @@
 // === SECRET LINK ===
 let secret = document.getElementsByClassName('secret-link')[0];
 secret.addEventListener('mouseenter', function() {
-    secret.style.left = Math.random() * 100 + "%";
-    secret.style.top = Math.random() * 100 + "%";
+    secret.style.right = Math.random() * 95 + "%";
+    secret.style.top = Math.random() * 97 + "%";
+    // secret.style.color = makeRandomColor();
+    // secret.style.background = undefined;
 });
 
 // === STYLISH BUTTON ===
@@ -22,7 +24,9 @@ function makeRandomColor() {
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
 
-    return `rgb(${r}, ${g}, ${b})`;
+    let color = `rgb(${r}, ${g}, ${b})`;
+
+    return color;
 }
 
 

@@ -138,6 +138,7 @@ body {
     text-shadow: 0.1em 0.1em 0.2em black;
     text-decoration: none;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .game-bullet {
