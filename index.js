@@ -4,8 +4,6 @@ let secret = document.getElementsByClassName('secret-link')[0];
 secret.addEventListener('mouseenter', function() {
     secret.style.right = Math.random() * 95 + "%";
     secret.style.top = Math.random() * 97 + "%";
-    // secret.style.color = makeRandomColor();
-    // secret.style.background = undefined;
 });
 
 // === STYLISH BUTTON ===

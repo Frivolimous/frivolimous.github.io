@@ -1,20 +1,24 @@
 <head>
-    <title>Jeremy Moshe - Coding Teacher</title>
+    <title>Movement Game</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="Favicon.png">
 </head>
 <body>
-
-    <div id="color-box">
     <div class="navbar">
         <a href="./index.html">Home</a>
         <div class="disabled-nav-link">Projects</div>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </div>   
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
     </div>
-    <div id="main-container">
-        <div id="main-right-column">
-            I have amazing projects!
-        </div>
-    </div> 
+    <div id="game-container">
+        <canvas id="game-canvas" style="cursor:none;"></canvas>
+        <br><button id="reset-button">Start Game</button>
+    </div>
+    <div style="display:none">
+        <img src="Beach.png" id="background-image" />
+        <img src="monkey.png" id="player-image" />
+        <img src="monkey-dead.png" id="player-dead-image" />
+        <img src="coconut.png" id="baddie-image" />
+    </div>
+    <script src="movegame.js"></script>
 </body>
