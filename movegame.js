@@ -53,14 +53,14 @@ class GameController {
         this.drawGame();
         this.gameRunning = false;
         this.ctx.fillStyle = "#ffffffaa"
-        this.ctx.strokeStyle = "green";
+        this.ctx.strokeStyle = "#077";
         this.ctx.rect(50, 50, this.canvas.width - 100, this.canvas.height - 100);
         this.ctx.fill();
         this.ctx.stroke();
-        this.ctx.font = "30px Arial";
+        this.ctx.font = "25px Arial";
         this.ctx.fillStyle = "black";
-        this.ctx.fillText('Help the monkey dodge the coconuts!', 50, this.canvas.height / 2);
-        this.ctx.strokeText('Help the monkey dodge the coconuts!', 50, this.canvas.height / 2);
+        this.ctx.fillText('Help the monkey dodge the coconuts!', 90, 175);
+        this.ctx.strokeText('Help the monkey dodge the coconuts!', 90, 175);
         this.canvas.style.cursor = '';
         this.resetButton.style.display = '';
     }
@@ -68,7 +68,7 @@ class GameController {
     gameOver = () => {
         this.gameRunning = false;
         this.ctx.fillStyle = "#ffffffaa"
-        this.ctx.strokeStyle = "green";
+        this.ctx.strokeStyle = "#077";
         this.ctx.rect(50, 50, this.canvas.width - 100, this.canvas.height - 100);
         this.ctx.fill();
         this.ctx.stroke();
@@ -140,10 +140,12 @@ class GameController {
     }
 
     drawUi = () => {
-        this.ctx.fillStyle = 'white';
-        this.ctx.fillRect(this.canvas.width - 100, 0, 100, 30);
-        this.ctx.fillStyle = 'black';
-        this.ctx.font = '16px Arial';
+        // this.ctx.fillStyle = '#aaccaa   ';
+        // this.ctx.fillRect(this.canvas.width - 100, 0, 100, 30);
+        this.ctx.fillStyle = '#000';
+        this.ctx.strokeStyle = '#cff';
+        this.ctx.font = 'bold 16px Arial';
+        this.ctx.strokeText("Score: " + this.score, this.canvas.width - 80, 20);
         this.ctx.fillText("Score: " + this.score, this.canvas.width - 80, 20);
     }
 
