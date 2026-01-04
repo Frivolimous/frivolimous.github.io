@@ -120,7 +120,7 @@ class GameController {
     }
 
     drawGame = () => {
-        this.adjustCanvasSize();
+        this.drawBackground();
         this.player.draw(this.ctx);
         for (let baddie of this.baddies) {
             baddie.draw(this.ctx);
@@ -128,7 +128,7 @@ class GameController {
         this.drawUi();
     }
 
-    adjustCanvasSize = () => {
+    drawBackground = () => {
         // canvas.width = window.innerWidth * 0.8;
         // canvas.height = window.innerHeight * 0.8;
 

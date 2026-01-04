@@ -157,11 +157,18 @@ body {
     transition: all 0.3s;
 }
 
-#game-container {
+#fit-stack{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin: 2em;
+}
+
+.fit-container {
     background: #fff;
-    position: fixed;
     justify-self: center;
-    align-self: anchor-center;
     box-shadow: 0.3em 0.3em 1em 0;
     border-radius: 0.5em;
     padding: 1em;
