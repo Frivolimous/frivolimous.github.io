@@ -1,3 +1,46 @@
+/**
+Basic Coding Lesson:
+
+1. Variables and Functions
+Variable: something that stores a value
+Function: a block of code that performs a specific task
+
+Variables can be Numbers, Strings (text), Booleans (true/false), Arrays (lists), or Objects (key-value pairs).
+
+Functions can take inputs (parameters) and then do something with those inputs, either return a value or perform an action.
+
+2. Loops and Listeners
+Loop: a way to repeat a block of code multiple times
+Listener: a way to wait for an event (like a mouse click or key press) and then run some code when that event happens
+
+3. Classes and Objects
+Class: a blueprint for creating objects that share the same properties and methods
+Object: an instance of a class that has its own unique values for the properties defined in the class
+
+ */
+
+//POP IN
+// let canvas = document.getElementById('canvas-container');
+// canvas.style.position = "relative";
+// canvas.style.left = "-100vw";
+// let plan = document.getElementById('lesson-plan');
+// plan.style.position = "relative";
+// plan.style.top = "-100vh";
+// setTimeout(() => {
+//     canvas.style.transition = "left 0.5s ease-out";
+//     canvas.style.left = "0vw";
+// }, 100);
+
+// setTimeout(() => {
+//     plan.style.transition = "top 0.5s ease-out";
+//     plan.style.top = "0vh";
+// }, 600);
+
+const CONFIG = {
+    useImages: true,
+    staticBaddies: false
+}
+
 class GameController {
     canvas; ctx; player; resetButton;
     
@@ -28,14 +71,26 @@ class GameController {
 
         this.player = new PlayerSprite(this.canvas.width / 2, this.canvas.height / 2, 15);
         
-        this.canvas.addEventListener('mousemove', e => {
-            this.player.x = e.offsetX;
-            this.player.y = e.offsetY;
-        });
+        this.canvas.addEventListener('mousemove', this.movePlayer);
 
         this.showInstructions();
         this.onAnimationFrame();
         this.resetButton.addEventListener('click', this.resetGame);
+    }
+
+    movePlayer = e => {
+        this.player.x = e.offsetX;
+        this.player.y = e.offsetY;
+        
+        if (CONFIG.staticBaddies) {
+            for (let i = this.baddies.length - 1; i >= 0; i--) {
+                let baddie = this.baddies[i];
+                if (baddie.checkCollision(this.player)) {
+                    this.gameOver();
+                    return;
+                }
+            }
+        }
     }
 
     resetGame = () => {
@@ -47,6 +102,14 @@ class GameController {
         this.canvas.style.cursor = 'none';
         this.resetButton.style.display = 'none';
         this.gameSpeed = this.defaults.gameSpeed;
+
+        if (CONFIG.staticBaddies) {
+            this.baddies.push(new Baddie(10, 10, 20, 0));
+            this.baddies.push(new Baddie(200, 250, 20, 0));
+            this.baddies.push(new Baddie(300, 350, 20, 0));
+            this.baddies.push(new Baddie(400, 30, 20, 0));
+            this.baddies.push(new Baddie(500, 150, 20, 0));
+        }
     }
 
     showInstructions = () => {
@@ -82,7 +145,7 @@ class GameController {
     }
 
     onAnimationFrame = () => {
-        if (this.gameRunning) {
+        if (this.gameRunning && !CONFIG.staticBaddies) {
             this.updateGame();
         }
 
@@ -129,19 +192,20 @@ class GameController {
     }
 
     drawBackground = () => {
-        // canvas.width = window.innerWidth * 0.8;
-        // canvas.height = window.innerHeight * 0.8;
-
-        // this.ctx.fillStyle = 'lightblue';
-        // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.drawImage(document.getElementById('background-image'), 0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fillStyle = '#aaa5';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        if (CONFIG.useImages) {
+            this.ctx.drawImage(document.getElementById('background-image'), 0, 0, this.canvas.width, this.canvas.height);
+            this.ctx.fillStyle = '#aaa5';
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        } else {
+            this.ctx.fillStyle = 'lightblue';
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        }
     }
-
+    
     drawUi = () => {
         // this.ctx.fillStyle = '#aaccaa   ';
         // this.ctx.fillRect(this.canvas.width - 100, 0, 100, 30);
+
         this.ctx.fillStyle = '#000';
         this.ctx.strokeStyle = '#cff';
         this.ctx.font = 'bold 16px Arial';
@@ -166,9 +230,12 @@ class PlayerSprite {
     }
 
     draw(ctx) {
-        // ctx.fillStyle = 'brown';
-        // ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
-        ctx.drawImage(document.getElementById('player-image'), this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+        if (CONFIG.useImages) {
+            ctx.drawImage(document.getElementById('player-image'), this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+        } else {
+            ctx.fillStyle = 'brown';
+            ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+        }
     }
 }
 
@@ -192,15 +259,18 @@ class Baddie {
     }
 
     draw(ctx) {
-        // ctx.fillStyle = 'red';
-        // ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+        if (CONFIG.useImages) {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.drawImage(document.getElementById('baddie-image'), - this.size, - this.size, this.size * 2, this.size * 2);
+            ctx.restore();
 
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.drawImage(document.getElementById('baddie-image'), - this.size, - this.size, this.size * 2, this.size * 2);
-        ctx.restore();
-        // ctx.drawImage(document.getElementById('baddie-image'), this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+            // ctx.drawImage(document.getElementById('baddie-image'), this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+        } else {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+        }
     }
 
     checkBounds(canvas) {

@@ -184,4 +184,77 @@ body {
     border-radius: 0.3em;
     cursor: pointer;
     margin-top: -6em;
+    box-shadow: 0.1em 0.1em 0.1em 0;
+    transition: all 0.15s;
+}
+
+#reset-button:hover {
+    background: #afa;
+    box-shadow: 0.1em 0.1em 0.3em 0;
+}
+
+.project-button {
+    font-size: 1.2em;
+    color: #222;
+    background: #88f;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 0.3em;
+    cursor: pointer;
+    box-shadow: 0.1em 0.1em 0.1em 0;
+    transition: all 0.15s;
+    text-decoration: none;
+}
+
+.project-button:hover {
+    background: #aaf;
+    box-shadow: 0.1em 0.1em 0.3em 0;
+}
+
+#project-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2em;
+    margin: 2em;
+    width: 42em;
+    justify-self: center;
+}
+
+.stack-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+.slide-in-box {
+  /* Initial state before animation */
+  transform: translateX(-100vw); /* Starts off the left side of the viewport */
+  animation: slideIn 0.5s forwards; /* Apply the animation */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100vw); /* Start position: off-screen left */
+  }
+  to {
+    transform: translateX(0); /* End position: original place */
+  }
+}
+
+.slide-down-box {
+  /* Initial state before animation */
+  transform: translateY(-100vh); /* Starts off the bottom side of the viewport */
+  animation: slideDown 0.5s forwards; /* Apply the animation */
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100vh); /* Start position: off-screen bottom */
+  }
+  to {
+    transform: translateY(0); /* End position: original place */
+  }
 }

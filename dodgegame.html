@@ -1,0 +1,67 @@
+<head>
+    <title>Movement Game</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="Favicon.png">
+</head>
+<body>
+    <div class="navbar">
+        <a href="./index.html">Home</a>
+        <a href="./projects.html">Projects</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+    <div id="fit-stack">
+        <div class="fit-container slide-in-box">
+            <canvas id="game-canvas"></canvas>
+            <br><button id="reset-button">Start Game</button>
+        </div>
+        <div class="fit-container slide-down-box" style="text-align: left; animation-delay: 0.5s;">
+            <b>Lesson Plan:</b>
+            <p>
+                <b>Lesson 1:</b><br>
+                1. Setup Page & Canvas<br>
+                1a. Setup files<br>
+                1b. Make a Canvas<br>
+                1c. Draw Stuff<br>
+                <br><b>Lesson 2:</b><br>
+                2. Create Player Object<br>
+                3. Player Movement<br>
+                3a. Mouse Movement<br>
+                3b. Redraw when moving<br>
+                <br><b>Lesson 3:</b><br>
+                4. Create Baddie Object<br>
+                5. Collision Detection<br>
+                6. Game Over<br>
+                7. Start / Reset Button<br>
+                8. Menu Screen<br>
+                <br><b>Lesson 4:</b><br>
+                9. Class Structure (OOP)<br>
+                9a. Learn about Structure<br>
+                9b. Refactoring<br>
+                <br><b>Lesson 5:</b><br>
+                10. Ticker / Game Loop<br>
+                11. Baddie Logic<br>
+                11a. Baddie Spawning<br>
+                11b. Baddie Movement<br>
+                12. Score Tracking<br>
+                <br><b>Lesson 6:</b><br>
+                13. Game Balancing<br>
+                13a. Adjust starting values<br>
+                13b. Speeding up over time<br>
+                14. Better Graphics<br>
+
+            </p>
+            <!-- <h2>Movement Game</h2>
+            <p>Use the mouse to move the monkey and avoid the falling coconuts! How long can you survive?</p>
+            <p>This is a simple JavaScript game that demonstrates basic game mechanics such as player movement, collision detection, and score tracking. The player controls a monkey that must dodge falling coconuts. The game ends when the monkey is hit by a coconut, and the final score is displayed.</p>
+            <p>Feel free to explore the code and modify it to add new features or improve the gameplay!</p> -->
+        </div>
+    </div>
+    <div style="display:none">
+        <img src="Beach.png" id="background-image" />
+        <img src="monkey.png" id="player-image" />
+        <img src="monkey-dead.png" id="player-dead-image" />
+        <img src="coconut.png" id="baddie-image" />
+    </div>
+    <script src="movegame.js"></script>
+</body>
