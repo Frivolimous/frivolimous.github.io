@@ -6,28 +6,6 @@ secret.addEventListener('mouseenter', function() {
     secret.style.top = Math.random() * 97 + "%";
 });
 
-// === STYLISH BUTTON ===
-let styleButton = document.getElementsByClassName('style-button')[0];
-styleButton.addEventListener('click', function() {
-    let background = makeRandomColor();
-    let text = makeRandomColor();
-    styleButton.style.background = background;
-    styleButton.style.color = text;
-    styleButton.style.borderColor = text;
-    console.log(background, text);
-});
-
-function makeRandomColor() {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-
-    let color = `rgb(${r}, ${g}, ${b})`;
-
-    return color;
-}
-
-
 // === DODGE THE COCONUTS GAME ===
 let hero = document.getElementById('hero');
 let coconut = document.createElement('img');
