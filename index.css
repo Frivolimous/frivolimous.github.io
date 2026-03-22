@@ -15,6 +15,7 @@ body {
     border-radius: 0.5em;
     max-width: 47em;
     min-height: 30em;
+    top: 6em;
 }
 
 #main-left-column {
